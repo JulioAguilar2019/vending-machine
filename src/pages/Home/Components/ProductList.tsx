@@ -1,4 +1,5 @@
 import { useGetProducts } from "../../../hooks/useGetProducts";
+import { Error } from "../../../shared";
 import DialogDetails from "./DialogDetails";
 import { ProductCard } from './ProductCard';
 import { Skeleton } from './Skeleton';
@@ -10,6 +11,10 @@ export const ProductList = () => {
         return <Skeleton />
     }
 
+    if (products.isError) {
+        return <Error refetch={products.refetch} />
+    }
+
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -18,7 +23,7 @@ export const ProductList = () => {
                 </h2>
                 <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
                     {products.data?.map((product) => (
-                        <ProductCard product={product} />
+                        <ProductCard key={product.id} product={product} />
                     ))}
                 </div>
             </div>

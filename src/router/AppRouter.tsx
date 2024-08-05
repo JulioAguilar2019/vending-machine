@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom'
 import { PublicRoutes } from '../models/routes.model'
 import { Home, OrdersDelivered, OrdersPending } from '../pages'
+import NotFound from '../pages/NotFound/NotFound'
 
 export const AppRouter = () => {
     return (
         <Routes>
-            <Route path="*" element={<div> not found</div>}></Route>
+            <Route path="*" element={<NotFound />}></Route>
 
             <Route index element={<Home />} />
 
