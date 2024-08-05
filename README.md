@@ -15,7 +15,7 @@ This project is a web application that simulates a vending machine. It allows us
 
 # Features
 
- - ** Product Selection: ** Choose a product and select the desired quantity.
+ - Product Selection:  Choose a product and select the desired quantity.
    
 - Queue Management: Selected products are added to a waiting list.
    
