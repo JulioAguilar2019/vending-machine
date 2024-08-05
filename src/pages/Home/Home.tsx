@@ -15,7 +15,6 @@ export const Home = () => {
                         </div>
                         <div className="mt-8">
                             <h2 className="text-lg font-medium text-gray-900">Delivered Orders</h2>
-
                             <DeliveredProductList />
                         </div>
                     </div>

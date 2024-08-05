@@ -1,6 +1,7 @@
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import React from 'react';
+import { useAlertStore } from '../../../stores/alerts/alert.store';
 import { useModalStore } from '../../../stores/dialogs/dialog-image.store';
 import { usePreparedProductStore } from '../../../stores/products/products.store';
 import { handleImageError } from '../../../utilities/handleImageError';
@@ -17,6 +18,7 @@ export default function DialogDetails() {
     } = useModalStore();
 
     const { addPreparedProduct } = usePreparedProductStore();
+    const { addAlert } = useAlertStore();
 
     const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setQuantity(Number(event.target.value));
@@ -26,6 +28,7 @@ export default function DialogDetails() {
         event.preventDefault();
         if (selectedProduct) {
             addPreparedProduct(selectedProduct, quantity);
+            addAlert('info', `Preparing ${selectedProduct.name}...`);
             closeModal();
         }
     };
@@ -33,12 +36,11 @@ export default function DialogDetails() {
     return (
         <Dialog open={isOpen} onClose={closeModal} className="fixed inset-0 z-10 overflow-y-auto">
             <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-
             <div className="flex items-center justify-center min-h-screen p-4 text-center sm:p-0">
                 <DialogPanel className="relative inline-block w-full max-w-md overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
                     <button
                         type="button"
-                        onClick={() => closeModal()}
+                        onClick={closeModal}
                         className="absolute right-4 top-4 text-gray-400 hover:text-gray-500"
                     >
                         <span className="sr-only">Close</span>
