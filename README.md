@@ -1,8 +1,6 @@
-# React + TypeScript + Vite
 
 # Table of Contents
 
-- [React + TypeScript + Vite](#react--typescript--vite)
 - [Table of Contents](#table-of-contents)
 - [Vending Machine Simulator](#vending-machine-simulator)
 - [Features](#features)
@@ -17,7 +15,7 @@ This project is a web application that simulates a vending machine. It allows us
 
 # Features
 
- - Product Selection: Choose a product and select the desired quantity.
+ - ** Product Selection: ** Choose a product and select the desired quantity.
    
 - Queue Management: Selected products are added to a waiting list.
    
@@ -38,17 +36,17 @@ This project is a web application that simulates a vending machine. It allows us
 
 To install the project dependencies, run the following command:
 
-`bash
+```bash
 git clone https://github.com/username/vending-machine.git
-`
+```
 
-`bash
+```bash
 cd vending-machine
-`
+```
 
-`
+```bash
 yarn 
-`
+```
 # Run the project
 
 To run the project in a development environment, use the following command:
