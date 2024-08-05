@@ -1,4 +1,4 @@
-import { MobileSidebar, StaticSidebar } from '../shared'
+import { Footer, MobileSidebar, StaticSidebar } from '../shared'
 
 interface Props {
     children: React.ReactNode

@@ -1,5 +1,5 @@
 export * from './Delivered/OrdersDelivered';
-export * from './Home/Components/DialogImage';
+export * from './Home/Components/DialogDetails';
 export * from './Home/Components/ProductCard';
 export * from './Home/Components/ProductList';
 export * from './Home/Components/Skeleton';

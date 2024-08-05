@@ -1,6 +1,6 @@
-import NotFoundImage from '../../../assets/imageNotFound.png';
-import { IProduct } from "../interfaces/products.interface";
 import { useModalStore } from '../../../stores/dialogs/dialog-image.store';
+import { handleImageError } from '../../../utilities/handleImageError';
+import { IProduct } from "../interfaces/products.interface";
 
 interface Props {
     product: IProduct;
@@ -9,22 +9,18 @@ interface Props {
 export const ProductCard = ({ product }: Props) => {
     const { openModal } = useModalStore();
 
-    const handleImageError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-        event.currentTarget.src = NotFoundImage;
-    };
-
     return (
         <div
             key={product.id}
-            className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white pointer-events-none"
+            className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+            onClick={() => openModal(product)}
         >
             <div className="aspect-h-4 aspect-w-3 sm:aspect-none group-hover:opacity-75 sm:h-96">
                 <img
                     alt={product.name}
                     src={product.thumbnail}
                     onError={handleImageError}
-                    className="h-full w-full object-scale-down object-center sm:h-full sm:w-full pointer-events-auto"
-                    onClick={() => openModal(product.thumbnail)}
+                    className="h-full w-full object-scale-down object-center sm:h-full sm:w-full"
                 />
             </div>
             <div className="flex flex-1 flex-col space-y-2 p-4">
