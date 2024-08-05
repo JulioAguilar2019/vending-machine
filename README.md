@@ -1,30 +1,73 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Table of Contents
 
-Currently, two official plugins are available:
+- [React + TypeScript + Vite](#react--typescript--vite)
+- [Table of Contents](#table-of-contents)
+- [Vending Machine Simulator](#vending-machine-simulator)
+- [Features](#features)
+- [Installation](#installation)
+- [Run the project](#run-the-project)
+- [Dependencies](#dependencies)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Vending Machine Simulator
 
-## Expanding the ESLint configuration
+This project is a web application that simulates a vending machine. It allows users to select products and quantities, add them to a queue, manage alerts, view purchase history, and see pending orders. The data is stored using Zustand and LocalStorage to ensure persistence.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+# Features
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+ - Product Selection: Choose a product and select the desired quantity.
+   
+- Queue Management: Selected products are added to a waiting list.
+   
+-  Product Delivery: Products are delivered in the order they were added
+   to the queue.
+   
+- Alerts: Manage alerts for different events (product ready, error,
+   etc.).
+   
+- Purchase History: Record of all purchases made.
+   
+- Pending Orders: Screen displaying the orders that are in the queue.
+   
+- Data Persistence: Uses Zustand and LocalStorage to store application
+   data.
+
+# Installation
+
+To install the project dependencies, run the following command:
+
+`bash
+git clone https://github.com/username/vending-machine.git
+`
+
+`bash
+cd vending-machine
+`
+
+`
+yarn 
+`
+# Run the project
+
+To run the project in a development environment, use the following command:
+
+```bash
+yarn dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Dependencies
+
+| Dependency                         | Version  |
+| ---------------------------------- | -------- |
+| @headlessui/react                  | ^2.1.2   |
+| @heroicons/react                   | ^2.1.5   |
+| @tanstack/react-query              | ^5.51.21 |
+| @tanstack/react-query-devtools     | ^5.51.21 |
+| axios                              | ^1.7.3   |
+| react                              | ^18.3.1  |
+| react-dom                          | ^18.3.1  |
+| react-router-dom                   | ^6.26.0  |
+| tailwindcss                        | ^3.4.7   |
+| zustand                            | ^4.5.4   |
