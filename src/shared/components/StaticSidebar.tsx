@@ -1,4 +1,5 @@
 import { classNames, navigation } from '../../utilities'
+import { Link } from 'react-router-dom';
 
 export const StaticSidebar = () => {
     return (
@@ -14,8 +15,8 @@ export const StaticSidebar = () => {
                 <ul role="list" className="flex flex-col items-center space-y-1">
                     {navigation.map((item) => (
                         <li key={item.name}>
-                            <a
-                                href={item.href}
+                            <Link
+                                to={item.href}
                                 className={classNames(
                                     item.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white',
                                     'group flex gap-x-3 rounded-md p-3 text-sm font-semibold leading-6',
@@ -23,12 +24,11 @@ export const StaticSidebar = () => {
                             >
                                 <item.icon aria-hidden="true" className="h-6 w-6 shrink-0" />
                                 <span className="sr-only">{item.name}</span>
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>
             </nav>
         </div>
-
     )
 }
