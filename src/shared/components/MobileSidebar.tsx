@@ -2,6 +2,7 @@ import { Dialog, DialogBackdrop, DialogPanel, TransitionChild } from '@headlessu
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import ReactLogo from '../../assets/react.svg';
 import { classNames, navigation } from '../../utilities';
 
 export const MobileSidebar = () => {
@@ -27,8 +28,8 @@ export const MobileSidebar = () => {
                         <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-2 ring-1 ring-white/10">
                             <div className="flex h-16 shrink-0 items-center">
                                 <img
-                                    alt="Your Company"
-                                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                                    alt="Vending Machine"
+                                    src={ReactLogo}
                                     className="h-8 w-auto"
                                 />
                             </div>

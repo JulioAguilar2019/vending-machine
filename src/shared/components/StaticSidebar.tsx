@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { classNames, navigation } from '../../utilities';
+import ReactLogo from '../../assets/react.svg';
 
 export const StaticSidebar = () => {
     const location = useLocation();
@@ -8,8 +9,8 @@ export const StaticSidebar = () => {
         <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4">
             <div className="flex h-16 shrink-0 items-center justify-center">
                 <img
-                    alt="Your Company"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    alt="Vending Machine"
+                    src={ReactLogo}
                     className="h-8 w-auto"
                 />
             </div>
