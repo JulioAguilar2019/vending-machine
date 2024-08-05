@@ -16,6 +16,7 @@ interface PreparedProductState {
   decrementTime: () => void;
   clearStorage: () => void;
   cancelOrder: (orderId: string) => void;
+  prepareAgain: (product: IProduct, quantity: number) => void;
 }
 
 const generateUniqueId = (): string => {
@@ -48,6 +49,26 @@ export const usePreparedProductStore = create<PreparedProductState>((set) => ({
     });
   },
 
+  prepareAgain: (product: IProduct, quantity: number) => {
+    const timeRemaining = product.preparation_time * quantity;
+    const orderId = generateUniqueId();
+    const preparedProduct = { orderId, product, timeRemaining, quantity };
+
+    set((state) => {
+      const updatedPreparedProducts = [
+        ...state.preparedProducts,
+        preparedProduct,
+      ];
+      localStorage.setItem(
+        'preparedProducts',
+        JSON.stringify(updatedPreparedProducts)
+      );
+      const { addAlert } = useAlertStore.getState();
+      addAlert('success', `${product.name} has been added to preparation!`);
+      return { preparedProducts: updatedPreparedProducts };
+    });
+  },
+
   decrementTime: () => {
     set((state) => {
       const updatedPreparedProducts = state.preparedProducts.map(
@@ -60,7 +81,11 @@ export const usePreparedProductStore = create<PreparedProductState>((set) => ({
       const [stillPending, delivered] = updatedPreparedProducts.reduce(
         ([pending, delivered], product) => {
           if (product.timeRemaining <= 0) {
-            delivered.push(product);
+            delivered.push({
+              ...product,
+              timeRemaining:
+                product.product.preparation_time * product.quantity,
+            });
           } else {
             pending.push(product);
           }

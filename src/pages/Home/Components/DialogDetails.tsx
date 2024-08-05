@@ -41,14 +41,14 @@ export default function DialogDetails() {
                     <button
                         type="button"
                         onClick={closeModal}
-                        className="absolute right-4 top-4 text-gray-400 hover:text-gray-500"
+                        className="absolute right-4 top-4 text-gray-400 hover:text-gray-500 pointer-events-auto"
                     >
                         <span className="sr-only">Close</span>
                         <XMarkIcon aria-hidden="true" className="h-6 w-6" />
                     </button>
 
                     <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 p-6 sm:grid-cols-12 lg:items-center lg:gap-x-8">
-                        <div className="aspect-h-1 md:aspect-h-3 aspect-w-2 overflow-hidden rounded-lg sm:col-span-4 lg:col-span-5">
+                        <div className="aspect-h-1 md:aspect-h-3 aspect-w-2 overflow-hidden rounded-lg sm:col-span-4 lg:col-span-5 pointer-events-none">
                             <img
                                 alt={selectedProduct?.name}
                                 src={selectedProduct?.thumbnail}
