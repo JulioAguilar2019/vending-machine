@@ -6,14 +6,13 @@ interface Props {
 
 export const Layout = ({ children }: Props) => {
     return (
-        <>
+        <div className="flex flex-col min-h-screen">
             <MobileSidebar />
-
             <StaticSidebar />
-
-            {children}
-
-            {/* <Footer /> */}
-        </>
+            <div className="flex-1 flex flex-col">
+                {children}
+            </div>
+            <Footer />
+        </div>
     )
 }

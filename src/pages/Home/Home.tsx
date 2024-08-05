@@ -6,7 +6,7 @@ import { ProductList } from "./Components";
 export const Home = () => {
     return (
         <Layout>
-            <div className="flex h-screen overflow-hidden">
+            <div className="flex flex-1 overflow-hidden">
                 <aside className="fixed inset-y-0 left-20 hidden w-96 overflow-y-auto border-r border-gray-200 px-4 py-6 sm:px-6 lg:px-8 xl:block">
                     <div className="flex flex-col h-full">
                         <div className="flex-grow">

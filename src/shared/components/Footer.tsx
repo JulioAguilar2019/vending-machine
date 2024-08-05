@@ -29,10 +29,9 @@ const navigation = [
     },
 
 ]
-
 export const Footer = () => {
     return (
-        <footer className="lg:pl-20">
+        <footer className="lg:pl-20 mt-auto">
             <div className="xl:pl-96">
                 <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
                     <div className="flex justify-center space-x-6 md:order-2">
