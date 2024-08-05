@@ -1,10 +1,10 @@
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import React from 'react';
+import { ImageWithLoader } from '../../../shared/components/ImageWithLoader';
 import { useAlertStore } from '../../../stores/alerts/alert.store';
 import { useModalStore } from '../../../stores/dialogs/dialog-image.store';
 import { usePreparedProductStore } from '../../../stores/products/products.store';
-import { handleImageError } from '../../../utilities/handleImageError';
 
 export default function DialogDetails() {
     const {
@@ -49,10 +49,9 @@ export default function DialogDetails() {
 
                     <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 p-6 sm:grid-cols-12 lg:items-center lg:gap-x-8">
                         <div className="aspect-h-1 md:aspect-h-3 aspect-w-2 overflow-hidden rounded-lg sm:col-span-4 lg:col-span-5 pointer-events-none">
-                            <img
-                                alt={selectedProduct?.name}
+                            <ImageWithLoader
                                 src={selectedProduct?.thumbnail}
-                                onError={handleImageError}
+                                alt={selectedProduct?.name}
                                 className="object-scale-down object-center"
                             />
                         </div>

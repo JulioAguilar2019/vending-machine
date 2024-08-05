@@ -2,9 +2,9 @@ import { ClockIcon } from "@heroicons/react/24/outline";
 import React from 'react';
 import { Layout } from "../../layouts/Layout";
 import { Empty } from "../../shared/components/Empty";
+import { ImageWithLoader } from "../../shared/components/ImageWithLoader";
 import { useAlertStore } from '../../stores/alerts/alert.store';
 import { usePreparedProductStore } from '../../stores/products/products.store';
-import { handleImageError } from '../../utilities/handleImageError';
 
 
 export const OrdersPending: React.FC = () => {
@@ -24,17 +24,16 @@ export const OrdersPending: React.FC = () => {
 
                     <form className="mt-12">
                         <section aria-labelledby="cart-heading">
-                            <ul role="list" className="divide-y divide-gray-200 border-b border-t border-gray-200">
+                            <ul role="list" className="divide-y divide-gray-200 border-t border-gray-200">
                                 {preparedProducts.length === 0 ? (
                                     <Empty message="No pending orders" />
                                 ) : (
                                     preparedProducts.map((product) => (
                                         <li key={product.orderId} className="flex py-6">
                                             <div className="flex-shrink-0">
-                                                <img
-                                                    alt={product.product.name}
+                                                <ImageWithLoader
                                                     src={product.product.thumbnail}
-                                                    onError={handleImageError}
+                                                    alt={product.product.name}
                                                     className="h-24 w-24 rounded-md object-scale-down object-center sm:h-32 sm:w-32"
                                                 />
                                             </div>

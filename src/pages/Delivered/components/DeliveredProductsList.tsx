@@ -1,7 +1,7 @@
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import React from 'react';
+import { ImageWithLoader } from '../../../shared/components/ImageWithLoader';
 import { usePreparedProductStore } from '../../../stores/products/products.store';
-import { handleImageError } from '../../../utilities/handleImageError';
 
 export const DeliveredProductList: React.FC = () => {
     const { deliveredProducts } = usePreparedProductStore();
@@ -22,10 +22,9 @@ export const DeliveredProductList: React.FC = () => {
                     {deliveredProducts.map((product) => (
                         <li key={product.orderId} className="flex py-6">
                             <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                <img
-                                    alt={product.product.name}
+                                <ImageWithLoader
                                     src={product.product.thumbnail}
-                                    onError={handleImageError}
+                                    alt={product.product.name}
                                     className="h-full w-full object-scale-down object-center"
                                 />
                             </div>

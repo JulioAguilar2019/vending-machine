@@ -1,5 +1,5 @@
+import { ImageWithLoader } from '../../../shared/components/ImageWithLoader';
 import { useModalStore } from '../../../stores/dialogs/dialog-image.store';
-import { handleImageError } from '../../../utilities/handleImageError';
 import { IProduct } from "../interfaces/products.interface";
 
 interface Props {
@@ -16,10 +16,9 @@ export const ProductCard = ({ product }: Props) => {
             onClick={() => openModal(product)}
         >
             <div className="aspect-h-4 aspect-w-3 sm:aspect-none group-hover:opacity-75 sm:h-96">
-                <img
-                    alt={product.name}
+                <ImageWithLoader
                     src={product.thumbnail}
-                    onError={handleImageError}
+                    alt={product.name}
                     className="h-full w-full object-scale-down object-center sm:h-full sm:w-full"
                 />
             </div>
