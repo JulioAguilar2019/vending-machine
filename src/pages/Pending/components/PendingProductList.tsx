@@ -53,10 +53,8 @@ export const PendingProductList: React.FC = () => {
 
                                     <div className="flex">
                                         <button type="button"
-
                                             className="font-medium text-indigo-600 hover:text-indigo-500"
                                             onClick={() => handleCancelOrder(product.orderId)}
-
                                         >
                                             Cancel Order
                                         </button>

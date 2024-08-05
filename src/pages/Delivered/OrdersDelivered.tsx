@@ -1,5 +1,6 @@
 import { Layout } from "../../layouts/Layout";
 import { usePreparedProductStore } from "../../stores/products/products.store";
+import { handleImageError } from "../../utilities/handleImageError";
 
 export const OrdersDelivered = () => {
     const { deliveredProducts, prepareAgain } = usePreparedProductStore();
@@ -29,7 +30,8 @@ export const OrdersDelivered = () => {
                                         <img
                                             alt={order.product.name}
                                             src={order.product.thumbnail}
-                                            className="h-20 w-20 flex-none rounded-md object-cover object-center sm:h-48 sm:w-48"
+                                            onError={handleImageError}
+                                            className="h-20 w-20 flex-none rounded-md object-scale-down object-center sm:h-48 sm:w-48"
                                         />
                                         <div className="min-w-0 flex-1 pt-1.5 sm:pt-0">
                                             <h3 className="text-sm font-medium text-gray-900">
