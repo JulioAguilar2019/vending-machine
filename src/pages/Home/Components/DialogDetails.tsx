@@ -34,10 +34,10 @@ export default function DialogDetails() {
     };
 
     return (
-        <Dialog open={isOpen} onClose={closeModal} className="fixed inset-0 z-10 overflow-y-auto">
+        <Dialog open={isOpen} onClose={closeModal} className="fixed inset-0 z-10 flex items-center justify-center overflow-y-auto">
             <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
             <div className="flex items-center justify-center min-h-screen p-4 text-center sm:p-0">
-                <DialogPanel className="relative inline-block w-full max-w-md overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
+                <DialogPanel className="relative inline-block w-full max-w-md overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-lg sm:max-w-sm lg:max-w-md">
                     <button
                         type="button"
                         onClick={closeModal}
@@ -48,7 +48,7 @@ export default function DialogDetails() {
                     </button>
 
                     <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 p-6 sm:grid-cols-12 lg:items-center lg:gap-x-8">
-                        <div className="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg sm:col-span-4 lg:col-span-5">
+                        <div className="aspect-h-1 md:aspect-h-3 aspect-w-2 overflow-hidden rounded-lg sm:col-span-4 lg:col-span-5">
                             <img
                                 alt={selectedProduct?.name}
                                 src={selectedProduct?.thumbnail}

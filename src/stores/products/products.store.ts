@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { IProduct } from '../../pages';
+import { useAlertStore } from '../alerts/alert.store';
 
 export interface PreparedProduct {
   orderId: string;
@@ -14,6 +15,7 @@ interface PreparedProductState {
   addPreparedProduct: (product: IProduct, quantity: number) => void;
   decrementTime: () => void;
   clearStorage: () => void;
+  cancelOrder: (orderId: string) => void;
 }
 
 const generateUniqueId = (): string => {
@@ -79,6 +81,14 @@ export const usePreparedProductStore = create<PreparedProductState>((set) => ({
         localStorage.setItem('preparedProducts', JSON.stringify(stillPending));
       }
 
+      const { addAlert } = useAlertStore.getState();
+      delivered.forEach((product) => {
+        addAlert(
+          'success',
+          `${product.product.name} has been successfully prepared!`
+        );
+      });
+
       return {
         preparedProducts: stillPending,
         deliveredProducts: [...state.deliveredProducts, ...delivered],
@@ -92,6 +102,19 @@ export const usePreparedProductStore = create<PreparedProductState>((set) => ({
     set({
       preparedProducts: [],
       deliveredProducts: [],
+    });
+  },
+
+  cancelOrder: (orderId) => {
+    set((state) => {
+      const updatedPreparedProducts = state.preparedProducts.filter(
+        (product) => product.orderId !== orderId
+      );
+      localStorage.setItem(
+        'preparedProducts',
+        JSON.stringify(updatedPreparedProducts)
+      );
+      return { preparedProducts: updatedPreparedProducts };
     });
   },
 }));

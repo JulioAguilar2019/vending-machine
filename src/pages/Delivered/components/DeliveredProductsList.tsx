@@ -1,6 +1,7 @@
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import React from 'react';
 import { usePreparedProductStore } from '../../../stores/products/products.store';
+import { handleImageError } from '../../../utilities/handleImageError';
 
 export const DeliveredProductList: React.FC = () => {
     const { deliveredProducts } = usePreparedProductStore();
@@ -24,7 +25,8 @@ export const DeliveredProductList: React.FC = () => {
                                 <img
                                     alt={product.product.name}
                                     src={product.product.thumbnail}
-                                    className="h-full w-full object-cover object-center"
+                                    onError={handleImageError}
+                                    className="h-full w-full object-scale-down object-center"
                                 />
                             </div>
 

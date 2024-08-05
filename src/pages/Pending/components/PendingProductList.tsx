@@ -1,10 +1,19 @@
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import React from 'react';
+import { useAlertStore } from '../../../stores/alerts/alert.store';
 import { usePreparedProductStore } from '../../../stores/products/products.store';
 import { handleImageError } from '../../../utilities/handleImageError';
 
 export const PendingProductList: React.FC = () => {
-    const { preparedProducts } = usePreparedProductStore();
+    const { preparedProducts, cancelOrder } = usePreparedProductStore();
+
+    const { addAlert } = useAlertStore();
+
+
+    const handleCancelOrder = (orderId: string) => {
+        cancelOrder(orderId);
+        addAlert('error', 'Order has been cancelled.');
+    };
 
     if (preparedProducts.length === 0) {
         return (
@@ -43,7 +52,12 @@ export const PendingProductList: React.FC = () => {
                                     <p className="text-gray-500">Quantity: {product.quantity}</p>
 
                                     <div className="flex">
-                                        <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                        <button type="button"
+
+                                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                                            onClick={() => handleCancelOrder(product.orderId)}
+
+                                        >
                                             Cancel Order
                                         </button>
                                     </div>
