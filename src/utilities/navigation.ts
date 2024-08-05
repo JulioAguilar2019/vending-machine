@@ -10,13 +10,13 @@ export const navigation = [
   {
     name: 'Orders delivered',
     href: PublicRoutes.DELIVERED,
-    icon: ClipboardDocumentListIcon,
+    icon: ClipboardDocumentCheckIcon,
     current: false,
   },
   {
     name: 'Pending orders',
-    href: '/pending',
-    icon: ClipboardDocumentCheckIcon,
+    href: PublicRoutes.PENDING,
+    icon: ClipboardDocumentListIcon,
     current: false,
   },
 ];
